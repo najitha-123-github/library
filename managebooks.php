@@ -7,7 +7,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar">
-            <a href="#">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <a href="./index.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
             <div class="link">
                 <a href="admin.html">Home</a>
             </div>

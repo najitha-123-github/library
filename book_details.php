@@ -34,12 +34,12 @@ mysqli_close($conn);
 <body>
     <nav>
         <div class="navbar">
-            <a href="">Library Management System</a>
+            <a href="./index.html">Library Management System</a>
             <div class="link">
-                <a href="">Home</a>
+                <a href="./studentdashboard.php">Home</a>
                 <a href="./book_action.php">Booking</a>
-                <a href="">Returning</a>
-                <a href="">Logout</a>
+                <a href="./returning.php">Returning</a>
+                <a href="logout.php">Logout</a>
                 <a href="./login.html"></a>
             </div>
         </div>

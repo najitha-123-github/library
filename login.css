@@ -25,7 +25,7 @@
 .LoginForm{
     width: 400px;
     height: 400px;
-    background-color: rgb(247, 160, 227);
+    background-color: rgb(186, 216, 241);
     
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
     flex-direction: column;
     font-size: 14px;
     border-radius: 20px;
-    box-shadow: 1px 1px 10px 1px rgba(205, 15, 180, 0.949);
+    box-shadow: 3px 3px 20px 3px rgba(15, 31, 205, 0.949);
 }
 .doc1{
     width: 80%;
@@ -58,7 +58,7 @@
         
     }
     .LoginButton:hover{
-        background-color: rgb(10, 146, 153);
+        background-color: rgb(29, 239, 10);
     }
     .input{
         height: 100vh;
@@ -83,7 +83,7 @@
    }
    .navbar {
     height: 60px;
-    background-color: #ef9be0;
+    background-color: #90baed;
     padding: 3px;
     text-align: center;
     display: flex;
@@ -185,7 +185,7 @@
   }
   
   .signup-link a {
-    color: #007BFF;
+    color: #133f6e;
     text-decoration: none;
   }
   

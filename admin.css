@@ -2,7 +2,7 @@
 .navbar {
     width: 100%; /* Corrected width */
     height: 80px;
-    background-color: rgb(22, 79, 34);
+    background-color: rgb(151, 195, 237);
     display: flex;
     justify-content: center; /* Center the content inside */
     align-items: center;
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(22, 79, 34); /* Ensure background color is applied */
+    background-color: rgb(12, 47, 74); /* Ensure background color is applied */
 }
 
 /* Styling for the links container */
@@ -32,7 +32,7 @@
     text-decoration: none;
     font-weight: bold; /* Correct property for bold text */
     color: rgb(255, 255, 255);
-    font-size: 30px;
+    font-size: 20px;
 }
 
 /* Styling for the doc section */
@@ -46,6 +46,17 @@
     display: flex;
     align-items: center;
     justify-content: center; /* Center content horizontally and vertically */
+    flex-direction: column;
+
+
+    background: url(./assets/116.jpg);
+    background-size: cover;
+    background-color: aliceblue;
+    height: 650px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 
