@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
                 $teacherInfo = mysqli_fetch_assoc($teacherInfoResult);
                 $_SESSION['user_id'] = $teacherInfo['user_id']; 
             }
-            header('Location: teacherdash.html');
+            header('Location: teacherdash.php');
         } else {
             header('Location: admin.html'); 
         }

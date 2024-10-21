@@ -7,9 +7,9 @@
 <body>
     <nav class="navbar">
         <div class="navbar">
-            <a href="./index.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <a class="head" href="./index.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
             <div class="link">
-                <a href="admin.html">Home</a>
+                <a href="./manage_books.php">Home</a>
             </div>
         </div>
     </nav>

@@ -11,10 +11,12 @@ body {
     line-height: 1.6;
     color: #242627;
     background: url(assets/d.png.jpg);
+    background-size: contain;
+    height: min-content;
 }
 
 header {
-    background-color: #042a48;
+    background-color: #670f57;
     color: #e5ebef;
     padding: 10px 0;
 }
@@ -42,7 +44,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #86bbef;
+    color: #f1f4f6;
     text-decoration: none;
     font-weight: bold;
 }
@@ -56,7 +58,7 @@ main {
 }
 
 .feedback-section {
-    background-color: #5eb2cc;
+    background-color: #e397dc;
     padding: 20px;
     margin: 20px auto;
     max-width: 800px;
@@ -84,14 +86,14 @@ main {
 .feedback-section textarea {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #e51111;
+    border: 2px solid #4d0443;
     border-radius: 6px;
 }
 
 .feedback-section button {
     padding: 10px 20px;
     border: none;
-    background-color: #042749;
+    background-color: #650c59;
     color: #f1f0f0;
     border-radius: 6px;
     cursor: pointer;
@@ -103,7 +105,7 @@ main {
 
 footer {
     width: 100%;
-    background-color: #041638;
+    background-color: #490544;
     color: #f4efef;
      margin-top: 50px; 
     padding: 10px;

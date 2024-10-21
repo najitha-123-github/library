@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="returning.css">
+    <link rel="stylesheet" href="teacher_returning.css">
     <title>Returning Books</title>
 </head>
 <body>
@@ -31,8 +31,8 @@ $result = mysqli_query($conn, $sql);
     <div class="navbar-container">
         <a href="index.html" class="navbar-title">Library Management System</a>
         <div class="link">
-            <a href="studentdashboard.php">Home</a>
-            <a href="view_bookings.php">View Bookings</a>
+            <a href="teacherdash.php">Home</a>
+            <a href="teacher_view_booking.php">View Bookings</a>
             <a href="logout.php">Logout</a>
         </div>
     </div>

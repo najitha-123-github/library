@@ -6,13 +6,13 @@ if (!$conn) {
     die("Database connection failed:");
 }
 
-$userId = $_SESSION['user_id'];
-
+// Update the SQL query to select all bookings
 $sql = "
-    SELECT b.title AS book_title, bk.booking_date, bk.duration 
-    FROM bookings bk
-    JOIN books b ON bk.book_id = b.book_id
-    WHERE bk.user_id = '$userId'
+SELECT u.usid AS user_id, u.username, b.title AS book_title, bk.booking_date, bk.duration 
+FROM bookings bk
+LEFT JOIN books b ON bk.book_id = b.book_id
+LEFT JOIN users u ON bk.user_id = u.usid;
+
 ";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -22,36 +22,36 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="returning.css">
+    <link rel="stylesheet" href="managereturn.css">
     <title>Returning Books</title>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="navbar-container">
-        <a href="index.html" class="navbar-title">Library Management System</a>
-        <div class="link">
-            <a href="studentdashboard.php">Home</a>
-            <a href="view_bookings.php">View Bookings</a>
-            <a href="logout.php">Logout</a>
+        <div class="navbar">
+            <a class="head"   href="./admin.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <div class="link">
+                <a href="./manage_books.php">Home</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="doc">
-    <h1>Your Bookings</h1>
+    <h1>All Bookings</h1>
 </div>
 
 <div class="returning-table">
     <?php if (mysqli_num_rows($result) > 0): ?>
         <table>
             <tr>
+                <th>User Name</th>
                 <th>Book Title</th>
                 <th>Booking Date</th>
                 <th>Days Left for Returning</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <tr>
+                    <td><?php echo htmlspecialchars($row['username']); ?></td>
                     <td><?php echo htmlspecialchars($row['book_title']); ?></td>
                     <td><?php echo htmlspecialchars($row['booking_date']); ?></td>
                     <td>
@@ -71,7 +71,6 @@ $result = mysqli_query($conn, $sql);
 
                         // Calculate days left
                         $today = new DateTime();
-                        // Ensure to compare dates properly
                         $daysLeft = $returnDate->diff($today)->days;
 
                         if ($today < $returnDate) {
@@ -85,7 +84,7 @@ $result = mysqli_query($conn, $sql);
             <?php endwhile; ?>
         </table>
     <?php else: ?>
-        <p>No booked books found.</p>
+        <p>No bookings found.</p>
     <?php endif; ?>
 </div>
 
