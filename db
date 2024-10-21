@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2024 at 08:02 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Oct 20, 2024 at 10:07 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,10 @@ INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `booking_date`, `duration`) 
 (6, 10, 23, '2024-10-07 01:01:00', '1_week'),
 (8, 10, 29, '2024-10-08 06:50:50', '2_weeks'),
 (9, 10, 28, '2024-10-08 06:51:02', '1_week'),
-(10, 10, 41, '2024-10-08 06:51:18', '1_month');
+(10, 10, 41, '2024-10-08 06:51:18', '1_month'),
+(12, 17, 36, '2024-10-20 00:15:05', '1_week'),
+(13, 10, 33, '2024-10-20 02:28:53', '1_month'),
+(16, 7, 22, '2024-10-20 03:56:44', '1_week');
 
 -- --------------------------------------------------------
 
@@ -98,17 +101,18 @@ CREATE TABLE `feedback` (
   `username` varchar(25) NOT NULL,
   `email` varchar(25) NOT NULL,
   `message` varchar(250) NOT NULL,
-  `user_id` int(15) NOT NULL
+  `id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`username`, `email`, `message`, `user_id`) VALUES
+INSERT INTO `feedback` (`username`, `email`, `message`, `id`) VALUES
 ('assasa', 'asas@gmail.com', 'sdfghjmn ', 1),
 ('jjhhj', 'jbn@vhkugyh', 'hgfthhdcfvgku', 2),
-('jhjuhb', 'hgyu@gcygfc', 'hjgyufyryu', 3);
+('jhjuhb', 'hgyu@gcygfc', 'hjgyufyryu', 3),
+('aswathy dinesh', 'aswathydinesh04@gmail.com', 'asdfghjklqwertyuiozxcvbnm,sdfghjk', 4);
 
 -- --------------------------------------------------------
 
@@ -133,7 +137,11 @@ INSERT INTO `login` (`email`, `password`, `user_type`) VALUES
 ('ggfjf@ggfj', 'qwer', '0'),
 ('najithanazar786@gmail.com', 'zxcv', '0'),
 ('fathima@gmail.com', 'sdfg', '0'),
-('fathima@gmail.com', 'sdfg', '0');
+('fathima@gmail.com', 'sdfg', '0'),
+('aswathydinesh04@gmail.com', 'asdf', '0'),
+('amrthashaji@gmail.com', 'kuttusan', '0'),
+('amrthashaji@gmail.com', 'qwert', '1'),
+('amrthashaji@gmail.com', 'qwert', '1');
 
 -- --------------------------------------------------------
 
@@ -157,7 +165,9 @@ INSERT INTO `teacher` (`username`, `phonenumber`, `email`, `password`, `user_id`
 ('sulfiya', 2147483647, 'sulfiya@gmail.com', 'asdfghj', 5),
 ('Nafiya', 1234567890, 'nafii@gmail.com', 'qwer', 6),
 ('ammu', 1234567890, 'ammu@gmail.com', 'asdf', 7),
-('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11);
+('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11),
+('amrutha shaji', 2147483647, 'amrthashaji@gmail.com', 'qwert', 12),
+('amrutha shaji', 2147483647, 'amrthashaji@gmail.com', 'qwert', 13);
 
 -- --------------------------------------------------------
 
@@ -182,7 +192,9 @@ INSERT INTO `users` (`name`, `phonenumber`, `email`, `username`, `password`, `us
 ('cgfjfg', 1234567899, 'ggfjf@ggfj', 'rizwanaaaaaa', 'qwer', 10),
 ('najitha', 2147483647, 'najithanazar786@gmail.com', 'najithaa', 'zxcv', 11),
 ('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 12),
-('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 13);
+('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 13),
+('aswathy dinesh', 2147483647, 'aswathydinesh04@gmail.com', 'aswathy', 'asdf', 16),
+('kuttusan', 987654321, 'amrthashaji@gmail.com', 'amrtha', 'kuttusan', 17);
 
 --
 -- Indexes for dumped tables
@@ -204,7 +216,7 @@ ALTER TABLE `books`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `teacher`
@@ -227,7 +239,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -239,19 +251,19 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `user_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `usid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
