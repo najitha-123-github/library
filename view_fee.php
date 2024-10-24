@@ -1,3 +1,4 @@
+
 <?php
 // Database connection
 $conn = mysqli_connect("localhost", "root", "", "online_library_management_system");
@@ -58,7 +59,7 @@ if (isset($_GET['delete'])) {
                             <td>{$row['email']}</td>
                             <td>{$row['message']}</td>
                             <td>
-                                <a class='delete-link href='view_fee.php'?delete={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this message?\");'>Delete</a>
+                                <a class='delete-link href='view_fee.php'?}' onclick='return confirm(\"Are you sure you want to delete this message?\");'>Delete</a>
                             </td>
                           </tr>";
                 }

@@ -1,18 +1,22 @@
 <?php
 session_start();
+
 $conn = mysqli_connect("localhost", "root", "", "online_library_management_system");
 if (!$conn) {
     die("Database connection failed:");
 }
+
 // Update the SQL query to select all bookings
 $sql = "
-SELECT u.usid AS user_id, u.username, b.title AS book_title, bk.booking_date, bk.duration 
+SELECT u.usid AS user_id, u.username, b.title AS book_title, bk.booking_date, bk.duration ,bk.status,bk.mode
 FROM bookings bk
 LEFT JOIN books b ON bk.book_id = b.book_id
 LEFT JOIN users u ON bk.user_id = u.usid;
+
 ";
 $result = mysqli_query($conn, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,17 +26,20 @@ $result = mysqli_query($conn, $sql);
     <title>Returning Books</title>
 </head>
 <body>
+
 <nav class="navbar">
         <div class="navbar">
-            <a class="head"   href="./admin.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <a href="./admin.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
             <div class="link">
-                <a href="./manage_books.php">Home</a>
+                <a href="admin.html">Home</a>
             </div>
         </div>
     </nav>
+
 <div class="doc">
     <h1>All Bookings</h1>
 </div>
+
 <div class="returning-table">
     <?php if (mysqli_num_rows($result) > 0): ?>
         <table>
@@ -40,6 +47,8 @@ $result = mysqli_query($conn, $sql);
                 <th>User Name</th>
                 <th>Book Title</th>
                 <th>Booking Date</th>
+                <th>Status</th>
+                <th>Mode</th>
                 <th>Days Left for Returning</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -47,6 +56,8 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo htmlspecialchars($row['username']); ?></td>
                     <td><?php echo htmlspecialchars($row['book_title']); ?></td>
                     <td><?php echo htmlspecialchars($row['booking_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['status']); ?></td>
+                    <td><?php echo htmlspecialchars($row['mode']); ?></td>
                     <td>
                         <?php 
                         $bookingDate = new DateTime($row['booking_date']);

@@ -32,6 +32,7 @@ $result = mysqli_query($conn, $sql);
         <a href="index.html" class="navbar-title">Library Management System</a>
         <div class="link">
             <a href="studentdashboard.php">Home</a>
+            <a href="./editbooks.php">Booking</a>
             <a href="view_bookings.php">View Bookings</a>
             <a href="logout.php">Logout</a>
         </div>

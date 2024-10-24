@@ -8,7 +8,7 @@
 <nav class="nanbar">
 
         <div class="navbar">
-            <a href="#">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <a href="./index.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
             <div class="link">
                 <a href="./index.html">home</a> 
                 <a href="./login.php">login</a>

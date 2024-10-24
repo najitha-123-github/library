@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="manage_books.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="navbar">
-            <a class="head" href="./admin.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
+            <a href="./admin.html">ONLINE LIBRARY MANAGEMENT SYSTEM</a>
             <div class="link">
                 <a href="admin.html">Home</a>
             </div>
         </div>
     </nav>
-  <div class="pic">
+
     <main>
-    
+        <h1>Manage Books</h1>
         <div class="boxes">
             <div class="box">
                 <h2>Manage Books</h2>
@@ -34,9 +34,12 @@
                 <p>Track and manage book returns from students.</p>
                 <a href="./managereturn.php">Manage Returns</a>
             </div>
+            <div class="box">
+                <h2>Issue Book</h2>
+                <p>Issue a book to a user offline.</p>
+                <a href="./issuebook.php">Issue Book</a>
+            </div>
         </div>
-        
     </main>
-    </div>
 </body>
 </html>
