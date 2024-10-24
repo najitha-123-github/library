@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 03:27 AM
+-- Generation Time: Oct 24, 2024 at 07:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,23 +32,21 @@ CREATE TABLE `bookings` (
   `user_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
   `booking_date` datetime DEFAULT current_timestamp(),
-  `duration` varchar(20) NOT NULL
+  `duration` varchar(20) NOT NULL,
+  `mode` varchar(10) DEFAULT 'online',
+  `status` varchar(20) DEFAULT 'not returned'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `booking_date`, `duration`) VALUES
-(4, 11, 34, '2024-10-05 01:25:29', '1_week'),
-(5, 11, 35, '2024-10-05 01:42:33', '2_weeks'),
-(6, 10, 23, '2024-10-07 01:01:00', '1_week'),
-(8, 10, 29, '2024-10-08 06:50:50', '2_weeks'),
-(9, 10, 28, '2024-10-08 06:51:02', '1_week'),
-(10, 10, 41, '2024-10-08 06:51:18', '1_month'),
-(12, 17, 36, '2024-10-20 00:15:05', '1_week'),
-(13, 10, 33, '2024-10-20 02:28:53', '1_month'),
-(16, 7, 22, '2024-10-20 03:56:44', '1_week');
+INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `booking_date`, `duration`, `mode`, `status`) VALUES
+(6, 10, 23, '2024-10-07 01:01:00', '1_week', 'online', 'not returned'),
+(8, 10, 29, '2024-10-08 06:50:50', '2_weeks', 'online', 'returned'),
+(9, 10, 28, '2024-10-08 06:51:02', '1_week', 'online', 'returned'),
+(10, 10, 41, '2024-10-08 06:51:18', '1_month', 'online', 'returned'),
+(13, 13, 32, '2024-10-24 00:00:00', '1_month', 'offline', 'not returned');
 
 -- --------------------------------------------------------
 
@@ -90,8 +88,26 @@ INSERT INTO `books` (`photo`, `book_id`, `title`, `author`, `published_year`, `g
 ('assets/dog.jpg', 39, 'The Curious Incident Of The Dog In The Night-Time', 'Mark haddon', 2003, 'Mystry Novel'),
 ('assets/father.jpg', 40, 'The Innocents Of Father Brown', 'G K Chesterton', 1911, 'mystery'),
 ('assets/belive.jpg', 41, 'Believe In Yourself', 'Joseph Murphy', 1955, 'Self-Help'),
-('assets/maths.jpg', 66, 'Discreate Mathematics', 'Rajendra Akerkar', 2016, 'Mathematics'),
-('assets/coa.jpg', 67, 'Computer Architecture And Organisation ', 'Er Rajiv Chopra', 2011, 'bca');
+('assets/coa.jpg', 64, 'Computer Architecture And Organisation ', 'Er Rajiv Chopra', 2011, 'BCA'),
+('assets/mul pgmg.jpg', 65, 'Multimedia Programming', 'Siddhartha Bhattacharyya', 2016, 'BCA'),
+('assets/cg.jpg', 66, 'Computer Graphics', 'Dr Rajiv Chopra', 2015, 'BCA'),
+('assets/2.5.jpg', 67, 'Matering FoxPro 2.5', 'Charles Siegal', 1993, 'BCA'),
+('assets/algorithm in c.jpg', 68, 'Algorithm In C', 'Robert Sedgewick', 1990, 'BCA'),
+('assets/com system architecture.jpg', 69, 'Computer System Architecture', 'M Morris Mano', 1993, 'BCA'),
+('assets/adv com architecture.jpg', 70, 'Advanced Computer Architecture', 'Kai Hwag', 1993, 'BCA'),
+('assets/cloudn computing.jpg', 71, 'Cloud Computing', 'A Srinivasan', 2014, 'BCA'),
+('assets/core java for begginers.jpg', 72, 'Core Java For Beginners', 'Rashmi Kanta Das', 2013, 'BCA'),
+('assets/cn.jpg', 73, 'Computer Networking', 'James P Kurose', 2021, 'BCA'),
+('assets/daa.jpg', 74, 'Design And Analysis Of Algorithm', 'Parag Himansha Dare', 1900, 'BCA'),
+('assets/c++.jpg', 75, 'Introduction To Programming with C++', 'Y Daniel Liang', 2013, 'BCA'),
+('assets/data and computer.jpg', 76, 'Data And Computer Communication', 'William Stallings', 2007, 'BCA'),
+('assets/artificial intelligence.jpg', 77, 'Artificial Intelligence', 'Stuart Russel', 2020, 'BCA'),
+('assets/upgrading and repairing.jpg', 78, 'Upgrading And Repairing PCs', 'Scott Muetler', 2006, 'BCA'),
+('assets/os.jpg', 79, 'Operating System', 'Harvey M Deitel', 1945, 'BCA'),
+('assets/iit.jpg', 80, 'Introduction To Information Technology', 'Jennifer Sargunan', 2005, 'BCA'),
+('assets/ijp.jpg', 81, 'Internet & Java Programming', 'harrish Kumar', 2008, 'BCA'),
+('assets/8085.jpg', 82, 'The 80885 Microprocessor', 'K Udaya Kumar', 2008, 'BCA'),
+('assets/security.jpg', 83, 'Analyzing Computer Security', 'Charles p Pfleeger', 2011, 'BCA');
 
 -- --------------------------------------------------------
 
@@ -103,18 +119,17 @@ CREATE TABLE `feedback` (
   `username` varchar(25) NOT NULL,
   `email` varchar(25) NOT NULL,
   `message` varchar(250) NOT NULL,
-  `id` int(15) NOT NULL
+  `user_id` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`username`, `email`, `message`, `id`) VALUES
+INSERT INTO `feedback` (`username`, `email`, `message`, `user_id`) VALUES
 ('assasa', 'asas@gmail.com', 'sdfghjmn ', 1),
 ('jjhhj', 'jbn@vhkugyh', 'hgfthhdcfvgku', 2),
-('jhjuhb', 'hgyu@gcygfc', 'hjgyufyryu', 3),
-('aswathy dinesh', 'aswathydinesh04@gmail.com', 'asdfghjklqwertyuiozxcvbnm,sdfghjk', 4);
+('jhjuhb', 'hgyu@gcygfc', 'hjgyufyryu', 3);
 
 -- --------------------------------------------------------
 
@@ -139,13 +154,7 @@ INSERT INTO `login` (`email`, `password`, `user_type`) VALUES
 ('ggfjf@ggfj', 'qwer', '0'),
 ('najithanazar786@gmail.com', 'zxcv', '0'),
 ('fathima@gmail.com', 'sdfg', '0'),
-('fathima@gmail.com', 'sdfg', '0'),
-('aswathydinesh04@gmail.com', 'asdf', '0'),
-('amrthashaji@gmail.com', 'kuttusan', '0'),
-('amrthashaji@gmail.com', 'qwert', '1'),
-('amrthashaji@gmail.com', 'qwert', '1'),
-('dfg@gmail.com', 'sgt', '0'),
-('arjun@gmail.com', 'arjun', '0');
+('fathima@gmail.com', 'sdfg', '0');
 
 -- --------------------------------------------------------
 
@@ -169,9 +178,7 @@ INSERT INTO `teacher` (`username`, `phonenumber`, `email`, `password`, `user_id`
 ('sulfiya', 2147483647, 'sulfiya@gmail.com', 'asdfghj', 5),
 ('Nafiya', 1234567890, 'nafii@gmail.com', 'qwer', 6),
 ('ammu', 1234567890, 'ammu@gmail.com', 'asdf', 7),
-('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11),
-('amrutha shaji', 2147483647, 'amrthashaji@gmail.com', 'qwert', 12),
-('amrutha shaji', 2147483647, 'amrthashaji@gmail.com', 'qwert', 13);
+('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11);
 
 -- --------------------------------------------------------
 
@@ -196,11 +203,7 @@ INSERT INTO `users` (`name`, `phonenumber`, `email`, `username`, `password`, `us
 ('cgfjfg', 1234567899, 'ggfjf@ggfj', 'rizwanaaaaaa', 'qwer', 10),
 ('najitha', 2147483647, 'najithanazar786@gmail.com', 'najithaa', 'zxcv', 11),
 ('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 12),
-('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 13),
-('aswathy dinesh', 2147483647, 'aswathydinesh04@gmail.com', 'aswathy', 'asdf', 16),
-('kuttusan', 987654321, 'amrthashaji@gmail.com', 'amrtha', 'kuttusan', 17),
-('arjun ps', 987654321, 'dfg@gmail.com', 'arjuuu', 'sgt', 18),
-('arjun', 1234567890, 'arjun@gmail.com', 'pottan', 'arjun', 19);
+('bgfhgfgf', 1234567890, 'fathima@gmail.com', 'asdfgef', 'sdfg', 13);
 
 --
 -- Indexes for dumped tables
@@ -222,7 +225,7 @@ ALTER TABLE `books`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `teacher`
@@ -245,31 +248,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `usid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
