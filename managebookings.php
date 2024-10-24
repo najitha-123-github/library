@@ -35,16 +35,14 @@ $result = mysqli_query($conn, $query);
             </div>
         </div>
     </nav>
-
     <main>
-        <h1>Manage Bookings</h1>
-        
+        <h1>Manage Bookings</h1>       
         <table>
             <thead>
                 <tr>
                     <th>Booking ID</th>
                     <th>User Name</th>
-                    <th>Book Name</th>
+                    <th>Book Name</th> 
                     <th>Booking Date</th>
                     <th>Duration (days)</th>
                 </tr>
@@ -61,8 +59,6 @@ $result = mysqli_query($conn, $query);
                 <?php endwhile; ?>
             </tbody>
         </table>
-
     </main>
-
 </body>
 </html>
