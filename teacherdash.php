@@ -65,10 +65,6 @@ mysqli_close($conn);
     </div>
 </nav>
 
-<div class="doc">
-    <h1>TEACHER DASHBOARD</h1>
-</div>
-
 <div class="search-filter">
     <form method="POST" action="">
         <input type="text" name="search" placeholder="Search by title" value="<?php echo htmlspecialchars($searchTitle); ?>">

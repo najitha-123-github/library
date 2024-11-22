@@ -11,7 +11,7 @@ $book_id = intval($_POST['book_id']);
 $duration = mysqli_real_escape_string($conn, $_POST['duration']);
 
 
-$sql = "INSERT INTO bookings (user_id, book_id, duration) VALUES ('$user_id', '$book_id', '$duration')";
+$sql = "INSERT INTO bookings (user_id, book_id, duration, usertype) VALUES ('$user_id', '$book_id', '$duration',1)";
 if (mysqli_query($conn, $sql)) {
     echo "<script>
             alert('Booking successful!');

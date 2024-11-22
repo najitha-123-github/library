@@ -34,9 +34,8 @@ $result = mysqli_query($conn, $sql);
     <div class="navbar-container">
         <a href="index.html" class="navbar-title">Library Management System</a>
         <div class="link">
-            <a href="teacherdash.php">Home</a>
-            <a href="teacher_view_bookings.php">Booking</a>
-            <a href="returning.php">Returning</a>
+            <a href="teacherdash.html">Home</a>
+            <a href="teacher_returning.php">Returning</a>
             <a href="logout.php">Logout</a>
         </div>
     </div>

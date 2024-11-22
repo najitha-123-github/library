@@ -1,52 +1,173 @@
-.nanbar{
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
     width: 100%;
     height: 80px;
-    background-color:palegreen;
+    background-color: #107681; /* More modern shade */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
+    padding: 0 20px;
 }
-.navbar{
-    width: 1800%;
-    height: 80px;
-    background-color:rgb(16, 118, 129);
+
+.navbar-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-title:hover {
+    color: #a1c4d8;
+}
+
+.link {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 50%;
+}
 
+.link a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-.link{
-    width: 60%;
-    height: 80px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
 
+.link a:hover {
+    color: #a1c4d8;
+    transform: scale(1.1);
 }
-.link a{
-    text-decoration: none;
-    font-family: bold;
-    color: rgb(255, 255, 255);
-}
-a{
-    text-decoration: none;
-    font-family: bold;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-}
-.doc{
-    background: url(./assets/116.jpg);
-    background-size: cover;
+
+/* Hero section */
+.doc {
+    background: url('./assets/116.jpg') center center / cover no-repeat;
     background-color: aliceblue;
     height: 650px;
-    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
 }
-h1{
-    color: hwb(0 5% 95%);
+
+h1 {
     font-size: 80px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
 }
+
+/* Search and filter section */
+.search-filter {
+    padding: 20px 40px;
+    margin: 20px auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-filter input[type="text"],
+.search-filter select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.search-filter input[type="text"]:focus,
+.search-filter select:focus {
+    border-color: #107681;
+}
+
+.search-filter input[type="submit"] {
+    background-color: #107681;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.search-filter input[type="submit"]:hover {
+    background-color: #0e5e5b;
+}
+
+/* Book Grid */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.book-item {
+    background-color: white;
+    border: 1px solid #4c4848;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.book-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.book-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.book-item h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.book-item p {
+    margin: 5px 0;
+}
+
+.book-item button {
+    background-color: #107681;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.book-item button a {
+    color: white;
+    text-decoration: none;
+}
+
+.book-item button:hover {
+    background-color: #0e5e5b;
+}
+

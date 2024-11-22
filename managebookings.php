@@ -6,10 +6,19 @@ if (!$conn) {
     exit();
 }
 
-// Update the query to fetch book_id, author_name, status, and mode
+// Update the query to fetch the username and usertype (Student/Teacher)
 $query = "
 SELECT b.id AS booking_id, 
-       u.username AS user_name, 
+       CASE 
+           WHEN b.usertype = 0 THEN u.username 
+           WHEN b.usertype = 1 THEN s.username 
+           ELSE 'Unknown' 
+       END AS user_name,
+       CASE
+           WHEN b.usertype = 0 THEN 'Student'
+           WHEN b.usertype = 1 THEN 'Teacher'
+           ELSE 'Unknown'
+       END AS user_type,
        bk.book_id, 
        bk.title AS book_name,
        bk.author AS author,
@@ -19,6 +28,7 @@ SELECT b.id AS booking_id,
        b.mode 
 FROM bookings b 
 LEFT JOIN users u ON b.user_id = u.usid 
+LEFT JOIN teacher s ON b.user_id = s.user_id 
 LEFT JOIN books bk ON b.book_id = bk.book_id;
 ";
 $result = mysqli_query($conn, $query);
@@ -64,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['return'])) {
             <tr>
                 <th>Booking ID</th>
                 <th>User Name</th>
+                <th>User Type</th>
                 <th>Book ID</th>
                 <th>Book Name</th>
                 <th>Author Name</th>
@@ -79,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['return'])) {
             <tr>
                 <td><?php echo htmlspecialchars($row['booking_id']); ?></td>
                 <td><?php echo htmlspecialchars($row['user_name']); ?></td>
+                <td><?php echo htmlspecialchars($row['user_type']); ?></td> <!-- Display usertype -->
                 <td><?php echo htmlspecialchars($row['book_id']); ?></td>
                 <td><?php echo htmlspecialchars($row['book_name']); ?></td>
                 <td><?php echo htmlspecialchars($row['author']); ?></td>

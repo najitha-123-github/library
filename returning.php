@@ -9,7 +9,7 @@ if (!$conn) {
 $userId = $_SESSION['user_id'];
 
 $sql = "
-    SELECT b.title AS book_title, bk.booking_date, bk.duration 
+    SELECT b.title AS book_title, bk.booking_date, bk.duration, bk.status 
     FROM bookings bk
     JOIN books b ON bk.book_id = b.book_id
     WHERE bk.user_id = '$userId'
@@ -57,28 +57,29 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo htmlspecialchars($row['booking_date']); ?></td>
                     <td>
                         <?php 
-                        $bookingDate = new DateTime($row['booking_date']);
-                        $duration = $row['duration'];
-
-                        // Calculate return date based on duration
-                        $returnDate = clone $bookingDate; // Clone to keep original booking date
-                        if ($duration === '1_week') {
-                            $returnDate->modify('+1 week');
-                        } elseif ($duration === '2_weeks') {
-                            $returnDate->modify('+2 weeks');
-                        } elseif ($duration === '1_month') {
-                            $returnDate->modify('+1 month');
-                        }
-
-                        // Calculate days left
-                        $today = new DateTime();
-                        // Ensure to compare dates properly
-                        $daysLeft = $returnDate->diff($today)->days;
-
-                        if ($today < $returnDate) {
-                            echo htmlspecialchars($daysLeft);
+                        if ($row['status'] == 'returned') {
+                            echo "Returned";
                         } else {
-                            echo "Overdue"; 
+                            $bookingDate = new DateTime($row['booking_date']);
+                            $duration = $row['duration'];
+
+                            $returnDate = clone $bookingDate; 
+                            if ($duration === '1_week') {
+                                $returnDate->modify('+1 week');
+                            } elseif ($duration === '2_weeks') {
+                                $returnDate->modify('+2 weeks');
+                            } elseif ($duration === '1_month') {
+                                $returnDate->modify('+1 month');
+                            }
+
+                            $today = new DateTime();
+                            $daysLeft = $returnDate->diff($today)->days;
+
+                            if ($today < $returnDate) {
+                                echo htmlspecialchars($daysLeft); 
+                            } else {
+                                echo "Overdue"; 
+                            }
                         }
                         ?>
                     </td>
