@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2024 at 01:36 AM
+-- Generation Time: Oct 24, 2024 at 07:43 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,22 +34,19 @@ CREATE TABLE `bookings` (
   `booking_date` datetime DEFAULT current_timestamp(),
   `duration` varchar(20) NOT NULL,
   `mode` varchar(10) DEFAULT 'online',
-  `status` varchar(20) DEFAULT 'not returned',
-  `usertype` varchar(20) DEFAULT NULL
+  `status` varchar(20) DEFAULT 'not returned'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `booking_date`, `duration`, `mode`, `status`, `usertype`) VALUES
-(6, 10, 23, '2024-10-07 01:01:00', '1_week', 'online', 'not returned', '0'),
-(8, 10, 29, '2024-10-08 06:50:50', '2_weeks', 'online', 'returned', '0'),
-(9, 10, 28, '2024-10-08 06:51:02', '1_week', 'online', 'returned', '0'),
-(10, 10, 41, '2024-10-08 06:51:18', '1_month', 'online', 'returned', '0'),
-(13, 13, 32, '2024-10-24 00:00:00', '1_month', 'offline', 'not returned', '0'),
-(16, 7, 24, '2024-11-09 01:11:37', '1_week', 'online', 'returned', '1'),
-(18, 12, 25, '2024-11-09 01:49:03', '1_week', 'online', 'not returned', '1');
+INSERT INTO `bookings` (`id`, `user_id`, `book_id`, `booking_date`, `duration`, `mode`, `status`) VALUES
+(6, 10, 23, '2024-10-07 01:01:00', '1_week', 'online', 'not returned'),
+(8, 10, 29, '2024-10-08 06:50:50', '2_weeks', 'online', 'returned'),
+(9, 10, 28, '2024-10-08 06:51:02', '1_week', 'online', 'returned'),
+(10, 10, 41, '2024-10-08 06:51:18', '1_month', 'online', 'returned'),
+(13, 13, 32, '2024-10-24 00:00:00', '1_month', 'offline', 'not returned');
 
 -- --------------------------------------------------------
 
@@ -157,8 +154,7 @@ INSERT INTO `login` (`email`, `password`, `user_type`) VALUES
 ('ggfjf@ggfj', 'qwer', '0'),
 ('najithanazar786@gmail.com', 'zxcv', '0'),
 ('fathima@gmail.com', 'sdfg', '0'),
-('fathima@gmail.com', 'sdfg', '0'),
-('fathima@gmail.com', 'poiu', '1');
+('fathima@gmail.com', 'sdfg', '0');
 
 -- --------------------------------------------------------
 
@@ -182,8 +178,7 @@ INSERT INTO `teacher` (`username`, `phonenumber`, `email`, `password`, `user_id`
 ('sulfiya', 2147483647, 'sulfiya@gmail.com', 'asdfghj', 5),
 ('Nafiya', 1234567890, 'nafii@gmail.com', 'qwer', 6),
 ('ammu', 1234567890, 'ammu@gmail.com', 'asdf', 7),
-('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11),
-('fathima', 1234567890, 'fathima@gmail.com', 'poiu', 12);
+('aswathy dinesh', 1234567890, 'aswathydinesh04@gmail.com', 'asdf', 11);
 
 -- --------------------------------------------------------
 
@@ -253,7 +248,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -271,7 +266,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
